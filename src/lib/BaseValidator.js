@@ -4,16 +4,26 @@ export default class {
     this.type = type;
     this.result = {};
   }
-  _cannotEmpty() {
-    return new Promise((resolve, reject) => {
-      if (!!this.val) {
-        resolve(this);
-      } else {
-        reject({
-          success: false,
-          message: `${this.type}は必須です。`
-        })
-      }
-    });
+  validate() {
+    if (!!this.val) {
+      return Promise.resolve(this);
+    } else {
+      return Promise.reject({
+        success: false,
+        message: `${this.type}は必須です。`
+      })
+    }
   }
+  // _cannotEmpty() {
+  //   return new Promise((resolve, reject) => {
+  //     if (!!this.val) {
+  //       resolve(this);
+  //     } else {
+  //       reject({
+  //         success: false,
+  //         message: `${this.type}は必須です。`
+  //       })
+  //     }
+  //   });
+  // }
 }

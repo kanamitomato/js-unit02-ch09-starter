@@ -1,5 +1,6 @@
 import PasswordValidator from './PasswordValidator';
 
+
 describe('password validator', () => {
   it("should pass with valid data", () => {
     const password = "samplePass1";
