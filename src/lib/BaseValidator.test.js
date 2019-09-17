@@ -1,15 +1,13 @@
 import BaseValidator from './BaseValidator';
 
-describe('base validator', () => {
-    it("should pass with valid data", () => {
-        const value = "value";
-        const validator = new BaseValidator(value);
-        return validator.validate()
+describe('BaseValidator', () => {
+    it("should pass with valid data", async () => {
+        const email = "/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i";
+        const validator = new BaseValidator(email);
+        return validator._cannotEmpty()
             .then((res) => {
-                expect(res).toEqual({
-                    success: true
-                });
-            });
+                expect(res).toMatch(validator)
+            })
     });
 
     it("should return error with empty value", () => {
